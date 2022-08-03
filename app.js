@@ -30,8 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // connect to mongodb
-// mongoose.connect("mongodb://localhost:27017/Wasd", {
-mongoose.connect("mongodb+srv://furkan:furkan@cluster0.7kgucgn.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://userbench:q6wrSrIk19kh97mG@cluster0.it0dg2k.mongodb.net/?retryWrites=true&w=majority", {
   useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
