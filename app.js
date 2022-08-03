@@ -37,7 +37,7 @@ mongoose.connect("mongodb+srv://furkan:furkan@cluster0.7kgucgn.mongodb.net/?retr
   useUnifiedTopology: true,
 });
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
 
 /* Auth */
 app.use("/auth", authRoute);
