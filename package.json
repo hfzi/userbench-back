@@ -2,9 +2,11 @@
   "name": "oauth-playlist",
   "version": "1.0.0",
   "description": "Course files for The Net Ninja OAuth playlist on YouTube",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "nodemon index.js"
   },
   "repository": {
     "type": "git",
