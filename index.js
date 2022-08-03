@@ -36,7 +36,8 @@ mongoose.connect("mongodb+srv://userbench:q6wrSrIk19kh97mG@cluster0.it0dg2k.mong
   useUnifiedTopology: true,
 });
 
-app.listen(process.env.PORT || 4000);
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => console.log("calisiyor"));
 
 /* Auth */
 app.use("/auth", authRoute);
