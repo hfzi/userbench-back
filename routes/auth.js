@@ -31,10 +31,12 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]), (re
 
 router.get(
 	"/google/callback",
-	passport.authenticate("google", (req, res) => {
-		res.redirect("https://userben.ch")
-	})
-);
+	passport.authenticate("google"),
+	(req, res) => {
+	  // res.send(req.user);
+	  res.redirect("https://userben.ch");
+	}
+  );
 
 router.get("/login/failed", (req, res) => {
 	res.status(401).json({
