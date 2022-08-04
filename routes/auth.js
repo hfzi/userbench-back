@@ -15,7 +15,6 @@ router.get("/login/success", (req, res) => {
 router.get("/login/confirm", (req, res) => {
 
   const token = jwt.sign({
-    user: req.user._json,
     exp: Math.floor(Date.now() * 1000),
     issuer: 'www.elmas.io'
   }, 'MQDzAAlNsFHaEg4ICA')
