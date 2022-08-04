@@ -11,5 +11,8 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ]
+    ],
+    "rewrites": [
+        {"source": "/:api*", "destination": "https://userbench-back.vercel.app/:match*"}
+      ]
 }
