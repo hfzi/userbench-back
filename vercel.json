@@ -6,7 +6,10 @@
             "use": "@vercel/node"
         }
     ],
-    "rewrites": [
-        {"source": "/:api*", "destination": "https://userbench-back.vercel.app/:api*"}
-      ]
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        }
+    ]
 }
