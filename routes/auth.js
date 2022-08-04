@@ -33,7 +33,7 @@ router.get("/google", passport.authenticate("google", ["profile", "email"]), (re
 router.get(
 	"/google/callback",
 	passport.authenticate("google", {
-		successRedirect: "http://localhost:3000",
+		successRedirect: "https://userben.ch",
 		failureRedirect: "/login/failed",
 	})
 	);
@@ -47,7 +47,7 @@ router.get(
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect("http://localhost:3000");
+	res.redirect("https://userben.ch");
 });
 
 module.exports = router;

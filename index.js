@@ -14,7 +14,7 @@ const app = express();
 // set up session cookies
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://userben.ch",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   }),
