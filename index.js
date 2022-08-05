@@ -29,7 +29,7 @@ const app = express();
 // );
 
 app.use(cors(),
-  createProxyMiddleware({ target: 'http://www.example.org', changeOrigin: true }),
+  createProxyMiddleware({ target: 'https://www.userben.ch', changeOrigin: true }),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
