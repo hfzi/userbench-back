@@ -34,7 +34,7 @@ router.get(
 	passport.authenticate("google"),
 	(req, res) => {
 	  // res.send(req.user);
-	  res.redirect("https://userben.ch");
+	  res.status(200).redirect("https://userben.ch");
 	}
   );
 
