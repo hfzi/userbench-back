@@ -8,7 +8,7 @@ const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const cors = require("cors");
-const { createProxyMiddleware } = require('http-proxy-middleware');
+//const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
