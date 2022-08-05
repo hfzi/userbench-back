@@ -37,7 +37,7 @@ router.get(
 	(req, res) => {
 	  // res.send(req.user);
 	  res.header("Access-Control-Allow-Origin", "*")
-	  res.status(200).redirect("https://userben.ch");
+	  res.status(200).redirect("http://localhost:3000");
 	}
   );
 
@@ -50,7 +50,7 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect("https://userben.ch");
+	res.redirect("http://localhost:3000");
 });
 
 module.exports = router;
