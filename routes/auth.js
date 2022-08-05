@@ -21,8 +21,10 @@ router.get("/login/confirm", (req, res) => {
 
 	if (req.user) {
 		// res.status(200).json({user: req.user._json,token});
+		res.header("Access-Control-Allow-Origin", "*")
 		res.status(200).json({ user: req.user._json, token });
 	} else {
+		res.header("Access-Control-Allow-Origin", "*")
 		res.status(403).json({ error: true, message: "Not Authorized" });
 	}
 });
@@ -34,6 +36,7 @@ router.get(
 	passport.authenticate("google"),
 	(req, res) => {
 	  // res.send(req.user);
+	  res.header("Access-Control-Allow-Origin", "*")
 	  res.status(200).redirect("https://userben.ch");
 	}
   );
