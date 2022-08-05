@@ -9,11 +9,13 @@ const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const cors = require("cors");
 // const { createProxyMiddleware } = require('http-proxy-middleware');
-
+const logger = require("morgan");
 const app = express();
 
 // set up session cookies
 app.use(
+  logger("dev"),
+  express.urlencoded({ extended: false }),
   cors(
     {
       allowedHeaders: '*',
