@@ -18,7 +18,8 @@ app.use(
     {
     origin: "https://wwww.userben.ch",
     methods: "GET,POST,PUT,DELETE",
-    credentials: false,
+    credentials: true,
+    optionsSuccessStatus: 200
   }
   ),
 cookieSession({
