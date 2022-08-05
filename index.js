@@ -20,14 +20,20 @@ const app = express();
 //     credentials: true,
 //   }
 //   ),
-//   cookieSession({
-//     maxAge: 24 * 60 * 60 * 1000,
-//     keys: ["ilikecookies"],
-//     name: "session",
-//   })
+// cookieSession({
+//   maxAge: 24 * 60 * 60 * 1000,
+//   keys: ["ilikecookies"],
+//   name: "session",
+// })
 // );
 
-app.use(cors())
+app.use(cors(),
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: ["ilikecookies"],
+    name: "session",
+  })
+)
 
 // initialize passport
 app.use(passport.initialize());
@@ -63,7 +69,7 @@ const authCheck = (req, res, next) => {
   res.json({ user: req.user });
 });
  */
-app.get("/search", /* authCheck, */ /* checkJwt, */ (req, res) => {
+app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
 
   User.find(
