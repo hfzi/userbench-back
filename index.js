@@ -8,7 +8,7 @@ const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const cors = require("cors");
-//const { createProxyMiddleware } = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
@@ -29,7 +29,7 @@ const app = express();
 // );
 
 app.use(cors(),
-  // createProxyMiddleware({ target: "https://wwww.userben.ch", changeOrigin: true }),
+  createProxyMiddleware({ target: "https://wwww.userben.ch", changeOrigin: true }),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
