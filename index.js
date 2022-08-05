@@ -15,7 +15,7 @@ const app = express();
 app.use(
   cors(
     {
-    origin: "https://userben.ch",
+    origin: "https://wwww.userben.ch",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   }
