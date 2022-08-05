@@ -16,17 +16,26 @@ const app = express();
 app.use(
   cors(
     {
-    origin: "https://wwww.userben.ch",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-    optionsSuccessStatus: 200
-  }
+      allowedHeaders: '*',
+      origin: "https://wwww.userben.ch",
+      methods: "GET,POST,PUT,DELETE",
+      credentials: true,
+      optionsSuccessStatus: 200
+    }
   ),
-cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: ["ilikecookies"],
-  name: "session",
-})
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: ["ilikecookies"],
+    name: "session",
+  }),
+  (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://www.userben.ch");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+  }
 );
 
 // app.use(cors(),
