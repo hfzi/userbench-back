@@ -13,11 +13,13 @@ const app = express();
 
 // set up session cookies
 app.use(
-  cors({
-    origin: "https://www.userben.ch",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  }),
+  cors(
+  //   {
+  //   origin: "https://www.userben.ch",
+  //   methods: "GET,POST,PUT,DELETE",
+  //   credentials: true,
+  // }
+  ),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
