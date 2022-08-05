@@ -29,7 +29,7 @@ const app = express();
 // );
 
 app.use(cors(),
-  createProxyMiddleware({ target: 'https://www.userben.ch', changeOrigin: true }),
+  createProxyMiddleware({ target: 'https://userbench-back.vercel.app', changeOrigin: true }),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
