@@ -13,29 +13,29 @@ const cors = require("cors");
 const app = express();
 
 // set up session cookies
-// app.use(
-//   cors(
-//     {
-//     origin: "https://wwww.userben.ch",
-//     methods: "GET,POST,PUT,DELETE",
-//     credentials: true,
-//   }
-//   ),
-// cookieSession({
-//   maxAge: 24 * 60 * 60 * 1000,
-//   keys: ["ilikecookies"],
-//   name: "session",
-// })
-// );
+app.use(
+  cors(
+    {
+    origin: "https://wwww.userben.ch",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: false,
+  }
+  ),
+cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: ["ilikecookies"],
+  name: "session",
+})
+);
 
-app.use(cors(),
-  // createProxyMiddleware({ target: "https://wwww.userben.ch", changeOrigin: true }),
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: ["ilikecookies"],
-    name: "session",
-  })
-)
+// app.use(cors(),
+//   // createProxyMiddleware({ target: "https://wwww.userben.ch", changeOrigin: true }),
+//   cookieSession({
+//     maxAge: 24 * 60 * 60 * 1000,
+//     keys: ["ilikecookies"],
+//     name: "session",
+//   })
+// )
 
 // initialize passport
 app.use(passport.initialize());
