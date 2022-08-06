@@ -4,25 +4,25 @@ const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 const User = require("./models/user-model");
 const mongoose = require("mongoose");
-const checkJwt = require("./auth");
-const jwt = require("jsonwebtoken");
+//const checkJwt = require("./auth");
+//const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const cors = require("cors");
 const app = express();
 
-const { v4 } = require('uuid');
+// const { v4 } = require('uuid');
 
-app.get('/', (req, res) => {
-  const path = `/item/${v4()}`;
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
-});
+// app.get('/', (req, res) => {
+//   const path = `/item/${v4()}`;
+//   res.setHeader('Content-Type', 'text/html');
+//   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+//   res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
+// });
 
-app.get('/item/:slug', (req, res) => {
-  const { slug } = req.params;
-  res.end(`Item: ${slug}`);
-});
+// app.get('/item/:slug', (req, res) => {
+//   const { slug } = req.params;
+//   res.end(`Item: ${slug}`);
+// });
 
 // set up session cookies
 app.use(
@@ -73,7 +73,7 @@ const authCheck = (req, res, next) => {
   }
 };
 
-app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
+app.get("/search", (req, res) => {
   const user = req.query.user;
 
   User.find(
