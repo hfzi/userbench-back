@@ -40,6 +40,12 @@ app.use(
   }
 );
 
+app.enableCors({
+  allowedHeaders: '*',
+  origin: '*',
+  credentials: true,
+});
+
 // app.use(cors(),
 //   // createProxyMiddleware({ target: "https://wwww.userben.ch", changeOrigin: true }),
 //   cookieSession({
