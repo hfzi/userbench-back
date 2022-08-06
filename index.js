@@ -32,7 +32,7 @@ app.use(
       origin: "https://userben.ch",
       methods: "GET,POST,PUT,DELETE",
       credentials: true,
-      optionsSuccessStatus: 200
+      preflightContinue: false,
     }
   ),
   cookieSession({
