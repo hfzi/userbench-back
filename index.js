@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const cors = require("cors");
 const app = express();
-const corsFix = require("./corsFix")
+
 const { v4 } = require('uuid');
 
 app.get('/api', (req, res) => {
