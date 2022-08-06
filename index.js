@@ -12,14 +12,14 @@ const app = express();
 
 const { v4 } = require('uuid');
 
-app.get('/api', (req, res) => {
-  const path = `/api/item/${v4()}`;
+app.get('/', (req, res) => {
+  const path = `/item/${v4()}`;
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
 });
 
-app.get('/api/item/:slug', (req, res) => {
+app.get('/item/:slug', (req, res) => {
   const { slug } = req.params;
   res.end(`Item: ${slug}`);
 });
@@ -58,10 +58,10 @@ const PORT = process.env.PORT || 4000
 app.listen(PORT, () => console.log("calisiyor"));
 
 /* Auth */
-app.use("/api/auth", authRoute);
+app.use("/auth", authRoute);
 
 // auth with google+
-app.get("/api/google", passport.authenticate("google", ["profile", "email"]));
+app.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 /* Profile */
 
@@ -74,7 +74,7 @@ const authCheck = (req, res, next) => {
   }
 };
 
-app.get("/api/search", /* authCheck, */ /* checkJwt, */(req, res) => {
+app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
 
   User.find(
@@ -86,7 +86,7 @@ app.get("/api/search", /* authCheck, */ /* checkJwt, */(req, res) => {
 });
 
 // isim güncelleme
-app.get("/api/update", authCheck, (req, res) => {
+app.get("/update", authCheck, (req, res) => {
   const kullanici = req.query.user;
   const newname = req.query.product;
 
@@ -97,7 +97,7 @@ app.get("/api/update", authCheck, (req, res) => {
 
 
 // isim array ekleme
-app.get("/api/add", (req, res) => {
+app.get("/add", (req, res) => {
   const names = req.query.product;
   const cates = req.query.category;
   const image = req.query.img;
@@ -120,7 +120,7 @@ app.get("/api/add", (req, res) => {
   console.log(Date())
 });
 
-app.post("/api/add", (req, res) => {
+app.post("/add", (req, res) => {
   const names = req.body.product;
   const id = req.body.id;
 
@@ -143,7 +143,7 @@ app.post("/api/add", (req, res) => {
 });
 
 // isim array silme
-app.get("/api/delete", authCheck, (req, res) => {
+app.get("/delete", authCheck, (req, res) => {
   const names = req.query.product;
 
   User.updateOne(
