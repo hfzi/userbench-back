@@ -13,29 +13,29 @@ const app = express();
 // set up session cookies
 app.use(
   cors(
-    {
-      allowedHeaders: '*',
-      origin: "https://www.userben.ch",
-      methods: "GET,POST,PUT,DELETE",
-      credentials: true,
-      optionsSuccessStatus: 200
-    }
+    // {
+    //   allowedHeaders: '*',
+    //   origin: "https://www.userben.ch",
+    //   methods: "GET,POST,PUT,DELETE",
+    //   credentials: true,
+    //   optionsSuccessStatus: 200
+    // }
   ),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
     name: "session",
   }),
-  (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Credentials', true)
-    res.setHeader('Access-Control-Allow-Origin', 'https://www.userben.ch')
-    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-    )
-    next();
-  }
+  // (req, res, next) => {
+  //   res.setHeader('Access-Control-Allow-Credentials', true)
+  //   res.setHeader('Access-Control-Allow-Origin', 'https://www.userben.ch')
+  //   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  //   res.setHeader(
+  //     'Access-Control-Allow-Headers',
+  //     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  //   )
+  //   next();
+  // }
 );
 
 // initialize passport
