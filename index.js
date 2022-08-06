@@ -14,8 +14,11 @@ const app = express();
 app.use(
   cors(
     {
-      origin: "https://www.userben.ch",
+      allowedHeaders: '*',
+      origin: "https://userben.ch",
+      methods: "GET,POST,PUT,DELETE",
       credentials: true,
+      optionsSuccessStatus: 200
     }
   ),
   cookieSession({
@@ -23,16 +26,6 @@ app.use(
     keys: ["ilikecookies"],
     name: "session",
   }),
-  // (req, res, next) => {
-  //   res.setHeader('Access-Control-Allow-Credentials', true)
-  //   res.setHeader('Access-Control-Allow-Origin', 'https://www.userben.ch')
-  //   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
-  //   res.setHeader(
-  //     'Access-Control-Allow-Headers',
-  //     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  //   )
-  //   next();
-  // }
 );
 
 // initialize passport

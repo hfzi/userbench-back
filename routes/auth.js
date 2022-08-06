@@ -16,7 +16,7 @@ router.get("/login/confirm", (req, res) => {
 
 	const token = jwt.sign({
 		exp: Math.floor(Date.now() * 1000),
-		issuer: 'www.elmas.io'
+		issuer: 'elmas.io'
 	}, 'MQDzAAlNsFHaEg4ICA')
 
 	if (req.user) {
@@ -33,7 +33,7 @@ router.get(
 	passport.authenticate("google"),
 	(req, res) => {
 		// res.send(req.user);
-		res.status(200).redirect("https://www.userben.ch");
+		res.status(200).redirect("https://userben.ch");
 	}
 );
 
@@ -46,7 +46,7 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect("https://www.userben.ch");
+	res.redirect("https://userben.ch");
 });
 
 module.exports = router;
