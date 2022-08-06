@@ -19,7 +19,7 @@ app.use(
   cors(
     {
       allowedHeaders: '*',
-      origin: "https://wwww.userben.ch",
+      origin: "https://www.userben.ch",
       methods: "GET,POST,PUT,DELETE",
       credentials: true,
       optionsSuccessStatus: 200
@@ -31,11 +31,13 @@ app.use(
     name: "session",
   }),
   (req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://www.userben.ch");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
     next();
   }
 );
@@ -47,7 +49,7 @@ app.enableCors({
 });
 
 // app.use(cors(),
-//   // createProxyMiddleware({ target: "https://wwww.userben.ch", changeOrigin: true }),
+//   // createProxyMiddleware({ target: "https://www.userben.ch", changeOrigin: true }),
 //   cookieSession({
 //     maxAge: 24 * 60 * 60 * 1000,
 //     keys: ["ilikecookies"],
