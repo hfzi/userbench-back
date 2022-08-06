@@ -43,10 +43,10 @@ const PORT = process.env.PORT || 4000
 app.listen(PORT, () => console.log("calisiyor"));
 
 /* Auth */
-app.use("/auth", authRoute);
+app.use("/api/auth", authRoute);
 
 // auth with google+
-app.get("/google", passport.authenticate("google", ["profile", "email"]));
+app.get("/api/google", passport.authenticate("google", ["profile", "email"]));
 
 /* Profile */
 
@@ -59,7 +59,7 @@ const authCheck = (req, res, next) => {
   }
 };
 
-app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
+app.get("/api/search", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
 
   User.find(
@@ -71,7 +71,7 @@ app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
 });
 
 // isim güncelleme
-app.get("/update", authCheck, (req, res) => {
+app.get("/api/update", authCheck, (req, res) => {
   const kullanici = req.query.user;
   const newname = req.query.product;
 
@@ -82,7 +82,7 @@ app.get("/update", authCheck, (req, res) => {
 
 
 // isim array ekleme
-app.get("/add", (req, res) => {
+app.get("/api/add", (req, res) => {
   const names = req.query.product;
   const cates = req.query.category;
   const image = req.query.img;
@@ -105,7 +105,7 @@ app.get("/add", (req, res) => {
   console.log(Date())
 });
 
-app.post("/add", (req, res) => {
+app.post("/api/add", (req, res) => {
   const names = req.body.product;
   const id = req.body.id;
 
@@ -128,7 +128,7 @@ app.post("/add", (req, res) => {
 });
 
 // isim array silme
-app.get("/delete", authCheck, (req, res) => {
+app.get("/api/delete", authCheck, (req, res) => {
   const names = req.query.product;
 
   User.updateOne(
