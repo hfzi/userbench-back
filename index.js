@@ -8,13 +8,10 @@ const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const cors = require("cors");
-// const { createProxyMiddleware } = require('http-proxy-middleware');
-const logger = require("morgan");
 const app = express();
 
 // set up session cookies
 app.use(
-  logger("dev"),
   express.urlencoded({ extended: false }),
   cors(
     {
@@ -49,7 +46,6 @@ app.enableCors({
 });
 
 // app.use(cors(),
-//   // createProxyMiddleware({ target: "https://www.userben.ch", changeOrigin: true }),
 //   cookieSession({
 //     maxAge: 24 * 60 * 60 * 1000,
 //     keys: ["ilikecookies"],
