@@ -70,10 +70,6 @@ const authCheck = (req, res, next) => {
   }
 };
 
-/* app.get("/profile", authCheck, (req, res) => {
-  res.json({ user: req.user });
-});
- */
 app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
 
