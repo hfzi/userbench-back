@@ -12,7 +12,6 @@ const app = express();
 
 // set up session cookies
 app.use(
-  express.urlencoded({ extended: false }),
   cors(
     {
       allowedHeaders: '*',
