@@ -25,7 +25,6 @@ app.get('/item/:slug', (req, res) => {
 });
 
 // set up session cookies
-app.use(corsFix)
 app.use(
   cors(
     {
