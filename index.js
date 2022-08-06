@@ -39,20 +39,6 @@ app.use(
   }
 );
 
-app.enableCors({
-  allowedHeaders: '*',
-  origin: '*',
-  credentials: true,
-});
-
-// app.use(cors(),
-//   cookieSession({
-//     maxAge: 24 * 60 * 60 * 1000,
-//     keys: ["ilikecookies"],
-//     name: "session",
-//   })
-// )
-
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
