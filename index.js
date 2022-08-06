@@ -13,13 +13,10 @@ const app = express();
 // set up session cookies
 app.use(
   cors(
-    // {
-    //   allowedHeaders: '*',
-    //   origin: "https://www.userben.ch",
-    //   methods: "GET,POST,PUT,DELETE",
-    //   credentials: true,
-    //   optionsSuccessStatus: 200
-    // }
+    {
+      origin: "https://www.userben.ch",
+      credentials: true,
+    }
   ),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
