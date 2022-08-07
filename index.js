@@ -4,25 +4,11 @@ const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 const User = require("./models/user-model");
 const mongoose = require("mongoose");
-//const checkJwt = require("./auth");
-//const jwt = require("jsonwebtoken");
+const checkJwt = require("./auth");
+const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const cors = require("cors");
 const app = express();
-
-// const { v4 } = require('uuid');
-
-// app.get('/', (req, res) => {
-//   const path = `/item/${v4()}`;
-//   res.setHeader('Content-Type', 'text/html');
-//   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-//   res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
-// });
-
-// app.get('/item/:slug', (req, res) => {
-//   const { slug } = req.params;
-//   res.end(`Item: ${slug}`);
-// });
 
 // set up session cookies
 app.use(
@@ -47,10 +33,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // connect to mongodb
-mongoose.connect("mongodb+srv://userbench:Pq46Ylb65IWMfoEW@cluster0.0ugvfk5.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://userbench:pezNmSWz6VibcZsH@cluster0.8wgcbsj.mongodb.net/?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => console.log("calisiyor"));
