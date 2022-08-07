@@ -73,7 +73,7 @@ const authCheck = (req, res, next) => {
   }
 };
 
-app.get("/search", (req, res) => {
+app.get("/search", async (req, res) => {
   const user = req.query.user;
 
   User.find(
