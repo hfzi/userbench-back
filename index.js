@@ -35,7 +35,9 @@ app.use(passport.session());
 // connect to mongodb
 mongoose.connect("mongodb+srv://userbench:pezNmSWz6VibcZsH@cluster0.8wgcbsj.mongodb.net/?retryWrites=true&w=majority", {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
 });
 
 
