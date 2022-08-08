@@ -1,7 +1,7 @@
 {
-  "name": "oauth-playlist",
+  "name": "userbench-bacl",
   "version": "1.0.0",
-  "description": "Course files for The Net Ninja OAuth playlist on YouTube",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
