@@ -14,7 +14,6 @@ const app = express();
 app.use(
   cors(
     {
-      allowedHeaders: '*',
       origin: "https://userben.ch",
       methods: "GET,POST,PUT,DELETE",
       credentials: true,
