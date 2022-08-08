@@ -12,20 +12,22 @@ const app = express();
 
 // set up session cookies
 app.use(
-  cors(
-    {
-      allowedHeaders: '*',
-      origin: "https://userben.ch",
-      methods: "GET,POST,PUT,DELETE",
-      credentials: true,
-      preflightContinue: false,
-    }
-  ),
+  cors(),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
     name: "session",
   }),
+  (req,res,next) => {
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    next()
+  }
 );
 
 // initialize passport
