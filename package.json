@@ -1,5 +1,5 @@
 {
-  "name": "oauth-playlist",
+  "name": "userbench-back",
   "version": "1.0.0",
   "description": "Course files for The Net Ninja OAuth playlist on YouTube",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/iamshaunjp/oauth-playlist.git"
   },
-  "author": "The Net Ninja",
+  "author": "elmas",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/iamshaunjp/oauth-playlist/issues"
