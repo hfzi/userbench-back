@@ -57,7 +57,6 @@ app.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
-    res.header("Access-Control-Allow-Origin", "*")
     res.redirect("/auth/login");
   } else {
     next();
