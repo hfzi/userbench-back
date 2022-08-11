@@ -22,7 +22,7 @@ router.get("/login/confirm", (req, res) => {
 	if (req.user) {
 		res.status(200).json({ user: req.user._json, token });
 	} else {
-		res.status(403).json({ error: true, message: "Not Authorized" });
+		res.status(403).json();
 	}
 });
 
