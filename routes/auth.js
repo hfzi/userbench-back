@@ -12,7 +12,7 @@ router.get("/login/success", (req, res) => {
 	}
 });
 
-router.get("/login/confirm", (req, res, next) => {
+router.post("/login/confirm", (req, res, next) => {
 	res.setHeader('Access-Control-Allow-Credentials', true)
     res.setHeader('Access-Control-Allow-Origin', 'https://userben.ch')
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
@@ -25,13 +25,11 @@ router.get("/login/confirm", (req, res, next) => {
 		issuer: 'elmas.io'
 	}, 'MQDzAAlNsFHaEg4ICA')
 
-	// if (req.user) {
-	// 	res.status(200).json({ user: req.user._json, token });
-	// } else {
-	// 	res.status(403).json();
-	// }
-
-	res.json({ user: req.user._json, token });
+	if (req.user) {
+		res.status(200).json({ user: req.user._json, token });
+	} else {
+		res.status(403).json();
+	}
 });
 
 router.get("/google", passport.authenticate("google", ["profile", "email"]), (req, res) => { });
