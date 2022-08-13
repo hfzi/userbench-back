@@ -12,18 +12,26 @@ router.get("/login/success", (req, res) => {
 	}
 });
 
-router.get("/login/confirm", (req, res) => {
+router.get("/login/confirm", (req, res, next) => {
+	res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', 'https://userben.ch')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version')
+    next()
 
 	const token = jwt.sign({
 		exp: Math.floor(Date.now() * 1000),
+		user: req.user._json,
 		issuer: 'elmas.io'
 	}, 'MQDzAAlNsFHaEg4ICA')
 
-	if (req.user) {
-		res.status(200).json({ user: req.user._json, token });
-	} else {
-		res.status(403).json();
-	}
+	// if (req.user) {
+	// 	res.status(200).json({ user: req.user._json, token });
+	// } else {
+	// 	res.status(403).json();
+	// }
+
+	res.json({ user: req.user._json, token });
 });
 
 router.get("/google", passport.authenticate("google", ["profile", "email"]), (req, res) => { });
