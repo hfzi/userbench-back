@@ -7,51 +7,35 @@ const mongoose = require("mongoose");
 const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
-const cors = require("cors");
 const app = express();
 
-const { v4 } = require('uuid');
-
-app.get('/', (req, res) => {
-  const path = `/item/${v4()}`;
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
-  res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
-});
-
-app.get('/item/:slug', (req, res) => {
-  const { slug } = req.params;
-  res.end(`Item: ${slug}`);
-});
-
-// set up session cookies
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
+    name: "session",
   }),
+  (req,res,next) => {
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    next()
+  }
 );
 
-app.use(
-  cors({
-    // allowedHeaders: '*',
-    origin: "http://userben.ch",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-    optionsSuccessStatus: 200
-  })
-)
 app.use(passport.initialize());
 app.use(passport.session());
 
 // connect to mongodb
-// mongoose.connection.on("connecting", () => {
   mongoose.connect("mongodb+srv://userbench:pezNmSWz6VibcZsH@cluster0.8wgcbsj.mongodb.net/?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 
   });
-// })
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => console.log("calisiyor"));
