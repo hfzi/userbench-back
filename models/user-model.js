@@ -12,7 +12,9 @@ const userSchema = new S({
     name: String,
     email: String,
     googleId: String,
-    thumbnail: String,
+    photo: String,
+    os: String,
+    browser: String,
     date: Date,
     product: [productSchema]
 });
