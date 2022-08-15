@@ -20,11 +20,13 @@
   "dependencies": {
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
-    "express": "^4.17.2",
+    "express": "^4.16.1",
+    "http-proxy-middleware": "^2.0.6",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.13",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^6.5.1",
     "passport": "^0.5.2",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
