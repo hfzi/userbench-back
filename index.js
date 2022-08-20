@@ -4,40 +4,42 @@ const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 const User = require("./models/user-model");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
-
 const app = express();
+require('dotenv').config()
 
-// set up session cookies
 app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  }),
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: ["ilikecookies"],
     name: "session",
-  })
+  }),
+  (req,res,next) => {
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', process.env.HOST)
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    next()
+  }
 );
 
-// initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
 // connect to mongodb
-// mongoose.connect("mongodb://localhost:27017/Wasd", {
-mongoose.connect("mongodb+srv://furkan:furkan@cluster0.7kgucgn.mongodb.net/?retryWrites=true&w=majority", {
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+  mongoose.connect("mongodb+srv://userbench:pezNmSWz6VibcZsH@cluster0.8wgcbsj.mongodb.net/?retryWrites=true&w=majority", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
 
-app.listen(4000);
+  });
+
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => console.log("calisiyor"));
 
 /* Auth */
 app.use("/auth", authRoute);
@@ -55,19 +57,14 @@ const authCheck = (req, res, next) => {
   }
 };
 
-/* app.get("/profile", authCheck, (req, res) => {
-  res.json({ user: req.user });
-});
- */
-app.get("/search", /* authCheck, */ /* checkJwt, */ (req, res) => {
+app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
-
-  User.find(
-    { name: user },
-    (err, data) => {
-      res.json(data);
-    }
-  );
+    User.find(
+      { name: user },
+      (err, data) => {
+        data ? res.json(data) : res.json(err)
+      }
+    );
 });
 
 // isim güncelleme
@@ -86,10 +83,13 @@ app.get("/add", (req, res) => {
   const names = req.query.product;
   const cates = req.query.category;
   const image = req.query.img;
+  const token = jwt.verify(req.query.token, 'MQDzAAlNsFHaEg4ICA')
+  // const token = req.query.token;
 
+  console.log(token)
 
   User.findOneAndUpdate(
-    { googleId: req.user.id },
+    { googleId: token.id },
     {
       $push: {
         product: [{ name: names, category: cates, image: image }]
@@ -97,12 +97,8 @@ app.get("/add", (req, res) => {
     },
     (err, data) => {
       res.json(data);
-      // console.log("hata", err)
     }
   );
-  console.log(req.user.id)
-  console.log(names)
-  console.log(Date())
 });
 
 app.post("/add", (req, res) => {
@@ -128,11 +124,12 @@ app.post("/add", (req, res) => {
 });
 
 // isim array silme
-app.get("/delete", authCheck, (req, res) => {
+app.get("/delete", (req, res) => {
   const names = req.query.product;
+  const token = jwt.verify(req.query.token, 'MQDzAAlNsFHaEg4ICA')
 
   User.updateOne(
-    { googleId: req.user.id },
+    { googleId: token.id },
     {
       $pull: { product: { name: names } },
     },

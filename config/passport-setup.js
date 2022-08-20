@@ -15,7 +15,7 @@ passport.use(
             User.findOne({ googleId: profile._json.sub }).then((currentUser) => {
                 if (currentUser) {
                   // already have this user
-                  console.log("user ise: ", profile);
+                  console.log("user isue: ", profile._json);
                   callback(null, currentUser);
                 } else {
                   // if not, create user in our db
@@ -34,17 +34,10 @@ passport.use(
                 }
               });
               
-            console.log("id", profile)
-            console.log("id", profile._json.sub)
-            console.log("name", profile._json.name)
-            console.log("mail", profile._json.email)
-            console.log("photo", profile._json.picture)
 			callback(null, profile);
 		}
 	)
 );
 
 passport.serializeUser((user, done) => {done(null, user)})
-
 passport.deserializeUser((user, done) => {done(null, user)})
-
