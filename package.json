@@ -1,7 +1,7 @@
 {
   "name": "userbench-back",
   "version": "1.0.0",
-  "description": "Course files for The Net Ninja OAuth playlist on YouTube",
+  "description": "I love cookies",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -19,12 +19,9 @@
   "homepage": "https://github.com/iamshaunjp/oauth-playlist#readme",
   "dependencies": {
     "cookie-session": "^2.0.0",
-    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.16.1",
-    "http-proxy-middleware": "^2.0.6",
     "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^3.1.2",
     "mongoose": "^6.5.1",
     "passport": "^0.5.2",
     "passport-google-oauth20": "^2.0.0"
