@@ -3,10 +3,12 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 const User = require("./models/user-model");
+const GPU = require("./models/PC/gpu-model");
 const mongoose = require("mongoose");
 const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
+const SearchRoute = require("./routes/search");
 const app = express();
 require('dotenv').config()
 
@@ -43,6 +45,7 @@ app.listen(PORT, () => console.log("calisiyor"));
 
 /* Auth */
 app.use("/auth", authRoute);
+app.use("/", SearchRoute);
 
 // auth with google+
 app.get("/google", passport.authenticate("google", ["profile", "email"]));
