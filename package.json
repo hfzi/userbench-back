@@ -1,7 +1,7 @@
 {
   "name": "userbench-back",
   "version": "1.0.0",
-  "description": "Course files for The Net Ninja OAuth playlist on YouTube",
+  "description": "I love cookies",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
