@@ -8,7 +8,6 @@ const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const app = express();
-require('dotenv').config()
 
 app.use(
   cookieSession({

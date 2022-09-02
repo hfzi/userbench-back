@@ -29,7 +29,7 @@ router.get(
 
 router.get("/google/callback", passport.authenticate("google"), (req, res) => {
 	// res.send(req.user);
-	res.status(200).redirect(process.env.HOST);
+	res.status(200).redirect("https://userben.ch");
 });
 
 router.get("/login/failed", (req, res) => {
@@ -41,7 +41,7 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	res.redirect(process.env.HOST);
+	res.redirect("https://userben.ch");
 });
 
 router.get("/register", (req, res) => {
