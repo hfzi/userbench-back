@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
-const HOST = require("./data");
+const HOST = require("./routes/data");
 const app = express();
 require('dotenv').config()
 
