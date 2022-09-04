@@ -26,6 +26,8 @@ chrome-user-data
 .env
 package-lock.json
 package-lock
+data.js
+data
 
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build
