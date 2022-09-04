@@ -7,9 +7,7 @@ const mongoose = require("mongoose");
 const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
-const HOST = require("./routes/data");
 const app = express();
-require('dotenv').config()
 
 app.use(
   cookieSession({
@@ -57,10 +55,6 @@ const authCheck = (req, res, next) => {
     next();
   }
 };
-
-app.get("/", (req,res) => {
-  res.send(HOST)
-})
 
 app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
