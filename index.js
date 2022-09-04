@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
+const HOST = require("./data");
 const app = express();
 require('dotenv').config()
 
@@ -18,7 +19,7 @@ app.use(
   }),
   (req,res,next) => {
     res.setHeader('Access-Control-Allow-Credentials', true)
-    res.setHeader('Access-Control-Allow-Origin', `${process.env.HOST}`)
+    res.setHeader('Access-Control-Allow-Origin', HOST)
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
     res.setHeader(
       'Access-Control-Allow-Headers',
@@ -56,6 +57,10 @@ const authCheck = (req, res, next) => {
     next();
   }
 };
+
+app.get("/", (req,res) => {
+  res.send(HOST)
+})
 
 app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
