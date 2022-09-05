@@ -19,6 +19,7 @@
   "homepage": "https://github.com/iamshaunjp/oauth-playlist#readme",
   "dependencies": {
     "cookie-session": "^2.0.0",
+    "dotenv": "^16.0.1",
     "cors": "^2.8.5",
     "express": "^4.16.1",
     "http-proxy-middleware": "^2.0.6",

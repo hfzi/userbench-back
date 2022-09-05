@@ -8,6 +8,7 @@ const checkJwt = require("./auth");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./routes/auth");
 const app = express();
+require('dotenv').config()
 
 app.use(
   cookieSession({
@@ -17,7 +18,7 @@ app.use(
   }),
   (req,res,next) => {
     res.setHeader('Access-Control-Allow-Credentials', true)
-    res.setHeader('Access-Control-Allow-Origin', 'https://userben.ch')
+    res.setHeader('Access-Control-Allow-Origin', process.env.HOST)
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
     res.setHeader(
       'Access-Control-Allow-Headers',
