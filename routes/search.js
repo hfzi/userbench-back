@@ -27,7 +27,7 @@ router.get("/search", (req,res) => {
   gpu.find({}, "name image Foundry ProcessSize Transistors MemorySize BoostClock TDP", (err, alien) => {
     //if (err) return handleError(err);
     res.json(alien);
-  }).limit(5)
+  }).limit(150)
 })
 
 module.exports = router;
