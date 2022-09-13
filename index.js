@@ -60,7 +60,7 @@ const authCheck = (req, res, next) => {
   }
 };
 
-app.get("/search", /* authCheck, */ /* checkJwt, */(req, res) => {
+app.get("/usersearch", /* authCheck, */ /* checkJwt, */(req, res) => {
   const user = req.query.user;
     User.find(
       { name: user },
